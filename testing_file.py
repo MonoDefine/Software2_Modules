@@ -27,35 +27,58 @@ while(True):
 print(f"Amount of students in class is {Student.counter}")
 """
 
+"""
+class Authors:
+    def __init__(self, author, book):
+        self.author = author
+        self.book = book
 
-class Portfolio:
-    def __init__(self, name):
+
+class Books:
+    def __init__(self, title, year):
+        self.title = title
+        self.year = year
+
+
+auth1 = Authors("J.K. Rowling", (Books("Harry Potter", "IDK")))
+auth2 = Authors("Nicolas Samuel Lietzau", (Books("Dreams of the Dying", 2020)))
+
+print(f"{auth1.author} has published: ")
+print(f"{auth1.book.title} in year {auth1.book.year}\n")
+
+print(f"{auth2.author} has published: ")
+print(f"{auth2.book.title} in year {auth2.book.year}")
+"""
+
+class Students:
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
-        self.stocks = {}
+        self.courses = []
 
-    def buystock(self, stock, amount):
-        self.stocks.update({stock : amount})
+    def enroll(self, course):
+        self.courses.append(course)
 
-    def sellstock(self, stock):
-        self.stocks.remove(stock)
-
-    def printPortfolio(self):
-        for x in self.stocks:
-            x.displ()
+    def printCourses(self):
+        print(f"{self.name} is in {self.courses}")
 
 
-class Stock:
-    def __init__(self, nam, amount, value):
-        self.nam = nam
-        self.amount = amount
-        self.value = value
-
-    def print(self):
-        print(f"You have {self.amount} {self.nam} with value {self.value}")
+class Courses:
+    def __init__(self, room, subject):
+        self.room = room
+        self.subject = subject
 
 
-p = Portfolio("Porty")
-s1 = Stock("Nokia", 100, 500)
-s2 = Stock("Motorola", 200, 1000)
+student1 = Students(1, "Evan")
+student2 = Students(2, "Not Evan")
+student3 = Students(3, "Amir")
 
-p.printPortfolio()
+course1 = Courses(100, "Python")
+course2 = Courses(451, "English")
+course3 = Courses(112, "Finnish")
+
+student1.enroll(course1.subject)
+student1.enroll(course2.subject)
+
+student1.printCourses()
+

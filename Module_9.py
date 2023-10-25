@@ -26,7 +26,7 @@ class Car:
     def drive(self, hours):
         new_distance = self.current * hours
         self.distance += new_distance
-        print(f"Your current distance driven is {self.distance}")
+        print(f"Your current distance driven is {self.distance} after {hours} hours")
 
 
 
@@ -36,7 +36,7 @@ uMax = int(input("Provide the maximum speed: "))
 car = Car(uRegister, uMax)
 
 car.accelerate(30)
-car.drive(1)
+car.drive(2)
 car.accelerate(70)
 car.drive(1)
 car.accelerate(50)
