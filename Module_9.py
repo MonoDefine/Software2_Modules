@@ -1,47 +1,71 @@
 """
 Software 2 - Python Module 9
-Fundamentals of object-oriented programming
+Fundamentals of Object-Oriented Programming
 """
 
 
 # Task 1
-class Car:
 
-    def __init__(self, register, max, current=0, distance=0):
-        self.register = register
-        self.max = max
-        self.current = current
+class Car:
+    def __init__(self, registration, max_speed, speed=0, distance=0):
+        self.registration = registration
+        self.max_speed = int(max_speed)
+        self.speed = speed
         self.distance = distance
 
-    def accelerate(self, accel):
-        self.current += accel
 
-        if self.current > self.max:
-            self.current = self.max
+    # Task 2
+    def accelerate(self, change):
+        self.speed = self.speed + change
+        if self.speed > self.max_speed:
+            self.speed = self.max_speed
 
-        if self.current < 0:
-            self.current = 0
-        print(f"Here is the current speed {self.current}")
+        elif self.speed < 0:
+            self.speed = 0
 
+    # Task 3
     def drive(self, hours):
-        new_distance = self.current * hours
-        self.distance += new_distance
-        print(f"Your current distance driven is {self.distance} after {hours} hours")
+        self.distance = self.distance + (self.speed * hours)
 
 
+car = Car("ABC-123", "142")
 
-uRegister = input("Provide a registration number: ")
-uMax = int(input("Provide the maximum speed: "))
-
-car = Car(uRegister, uMax)
+print(car.registration, f"{car.max_speed}km/h", car.speed, car.distance)
 
 car.accelerate(30)
-car.drive(2)
+car.drive(1.5)
 car.accelerate(70)
-car.drive(1)
+car.drive(3)
 car.accelerate(50)
 car.drive(1)
 car.accelerate(-200)
-car.drive(1)
-print(car.register, car.max, "km/h", car.current, car.distance)
+car.drive(5)
 
+# Task 4
+import random
+
+i = 1
+
+f = True
+
+car_lst = []
+
+while i < 11:
+    car = Car(f"ABC-{i}", f"{random.randint(100, 200)}")
+    car_lst.append(car)
+
+    i += 1
+
+while f:
+    for veh in car_lst:
+        speed = random.randint(-10, 15)
+        veh.accelerate(speed)
+
+        veh.drive(1)
+
+        if veh.distance >= 10000:
+            print(f"Car {veh.registration} is our winner!")
+            f = False
+
+for veh in car_lst:
+    print(veh.registration, f"{veh.max_speed}km/h", veh.speed, veh.distance)

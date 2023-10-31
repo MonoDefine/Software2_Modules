@@ -50,6 +50,7 @@ print(f"{auth2.author} has published: ")
 print(f"{auth2.book.title} in year {auth2.book.year}")
 """
 
+"""
 class Students:
     def __init__(self, id, name):
         self.id = id
@@ -81,4 +82,24 @@ student1.enroll(course1.subject)
 student1.enroll(course2.subject)
 
 student1.printCourses()
+"""
 
+
+class Animal:
+    def __init__(self, species):
+        self.species = species
+
+
+class Mammal(Animal):
+    def __init__(self, name, age, species):
+        self.name = name
+        self.age = age
+        super().__init__(species)
+
+    def print_information(self):
+        print("Name:", self.name, "\nAge:", self.age, "\nSpecies:", self.species)
+
+
+chimp = Mammal("Bobert", 14, "chimpanzee")
+
+chimp.print_information()
